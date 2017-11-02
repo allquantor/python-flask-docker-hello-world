@@ -2,12 +2,18 @@ import boto3
 from flask import Flask
 
 app = Flask(__name__)
-dynamodb = boto3.resource('dynamodb')
+dynamodb = boto3.resource(
+        'dynamodb',
+        region_name='eu-central-1'
+                          )
 table_coordinates = 'coordinates'
 
 
 def dbCreateCoordinates(coordinate, name):
-    client = boto3.client('dynamodb')
+    client = boto3.client(
+            'dynamodb',
+            region_name='eu-central-1'
+                          )
     existing_tables = client.list_tables()['TableNames']
     table = None
 
@@ -85,7 +91,7 @@ def createCoordinate(coordinate, name):
 
 @app.route('/get/<string:name>')
 def getCoordinates(name):
-    return dbGetCoordinates(name)
+    return dbGetCoordinates(name)docker
 
 
 @app.route("/")

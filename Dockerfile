@@ -1,5 +1,5 @@
 FROM python:2.7
-MAINTAINER Shekhar Gulati "shekhargulati84@gmail.com"
+MAINTAINER Ivan Morozov "Ivan"
 COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
